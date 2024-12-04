@@ -108,17 +108,20 @@ with tab2:
         "Risk Level (%)": [35, 25, 40]
     })
 
-    # Risk level visualization
+    # Risk level visualization with Sunburst
     st.write("### Risk Exposure Breakdown")
-    fig_risk = px.pie(
+    fig_risk_sunburst = px.sunburst(
         risk_data,
-        names="Metric",
+        path=["Metric"],
         values="Risk Level (%)",
         title="Risk Exposure at First Citizens Bank",
-        color_discrete_sequence=px.colors.sequential.RdBu
+        color="Risk Level (%)",
+        color_continuous_scale=px.colors.sequential.RdBu,
+        hover_data={"Risk Level (%)": True}
     )
-    fig_risk.update_traces(textinfo="percent+label")
-    st.plotly_chart(fig_risk, use_container_width=True)
+    fig_risk_sunburst.update_layout(margin=dict(t=30, l=0, r=0, b=0))
+    st.plotly_chart(fig_risk_sunburst, use_container_width=True)
+
 
 # Tab 3: About First Citizens Bank
 with tab3:
