@@ -19,7 +19,7 @@ st.set_page_config(
 # Header with logo
 t1, t2 = st.columns((0.1, 0.8))
 t1.image("index_0.jpeg", width=200)  # Replace 'index_0.jpeg' with your logo file path
-t2.title("Understanding Risk Analytics at First Citizens Bank")
+t2.title("Risk Analytics at First Citizens Bank")
 t2.markdown(
     "Explore insights into First Citizens Bank's risk management strategies, alongside stock performance trends. "
     "This dashboard highlights applications of Data Science and AI/ML in risk analytics."
@@ -38,7 +38,7 @@ tab1, tab_stock, tab_risk, tab3 = st.tabs(["Q&A Tool", "Stock Performance", "Ris
 # Tab 1: Q&A Tool
 with tab1:
     st.subheader("First Citizens Bank Q&A Tool")
-    st.write("Ask a question about First Citizens Bank's risk management and get an answer based on the preloaded context.")
+    st.write("This is a pre-built AI model: ask a question about First Citizens Bank's risk management and get an answer based on the preloaded context.")
 
     # Expanded Context
     context = """
