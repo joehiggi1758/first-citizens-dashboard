@@ -3,6 +3,7 @@ from transformers import pipeline
 import pandas as pd
 import yfinance as yf
 import plotly.express as px
+import os
 
 # Set theme colors for First Citizens Bank branding
 primary_color = "#004B8D"  # First Citizens Bank blue
@@ -72,9 +73,16 @@ with tab2:
     st.subheader("Stock Performance and Risk Metrics")
     st.write("Explore First Citizens Bank's stock trends and key risk indicators.")
 
-    # Fetching stock data
-    stock_data = yf.download("FCNCA", start="2020-01-01", end="2024-12-31")
-    stock_data.reset_index(inplace=True)
+    # File paths
+    stock_csv = "fcnca_stock_data.csv"
+
+    # Check if CSV exists, if not, download and save it
+    if not os.path.exists(stock_csv):
+        stock_data = yf.download("FCNCA", start="2020-01-01", end="2024-12-31")
+        stock_data.reset_index(inplace=True)
+        stock_data.to_csv(stock_csv, index=False)
+    else:
+        stock_data = pd.read_csv(stock_csv)
 
     # Stock price visualization
     st.write("### FCNCA Stock Price Over Time")
